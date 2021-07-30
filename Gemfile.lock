@@ -52,6 +52,7 @@ GEM
     activerecord (6.1.3.2)
       activemodel (= 6.1.3.2)
       activesupport (= 6.1.3.2)
+    activerecord-reset-pk-sequence (0.2.1)
     activestorage (6.1.3.2)
       actionpack (= 6.1.3.2)
       activejob (= 6.1.3.2)
@@ -181,6 +182,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.12)
+  activerecord-reset-pk-sequence
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug
@@ -195,7 +197,7 @@ DEPENDENCIES
   tzinfo-data
 
 RUBY VERSION
-   ruby 2.7.3p183
+   ruby 2.7.4p191
 
 BUNDLED WITH
-   2.2.19
+   2.2.24
