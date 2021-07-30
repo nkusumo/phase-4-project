@@ -1,3 +1,8 @@
 class LikeSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :song_id
+  belongs_to :user
+
+  # def user
+  #   byebug
+  # end
 end
