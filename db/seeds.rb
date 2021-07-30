@@ -18,7 +18,7 @@ Like.reset_pk_sequence
 
 puts "Creating users..."
 users = ["Kyle", "Nisa", "Greg", "Arthur", "Lucy", "Adrienne", "Carlos", "Edward", "Ryan", "Brendan", "Kenny", "Terry", "Shevon", "Adreena", "Zeus", "Darren", "Jack", "Dan"]
-users.each {|user| User.create(name: user, username: "#{user}#{rand(1..100)}")}
+users.each {|user| User.create(name: user, username: "#{user}#{rand(1..100)}", password: "pass123")}
 
 puts "Seeding Songs..."
 Song.create!([

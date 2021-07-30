@@ -3,5 +3,5 @@ class Song < ApplicationRecord
     has_many :users, through: :comments
 
     has_many :likes, dependent: :destroy
-    has_many :like_users, through: :likes
+    has_many :like_users, through: :likes, source: :user
 end
