@@ -24,6 +24,14 @@ class UsersController < ApplicationController
         render json: {}
     end
 
+    def user_posts
+        
+        user = find_user
+        user_post = user.posts
+        render json: user_post
+
+    end
+
     private
 
     def find_user

@@ -13,7 +13,6 @@ function App() {
     <>
       <NavBar />
       <Banner />
-      <BrowserRouter>
         <Switch>
           <Route exact path="/">
             <HomePage />
@@ -25,7 +24,7 @@ function App() {
             <MySongs />
           </Route>
         </Switch>
-      </BrowserRouter>
+      
     </>
   );
 }

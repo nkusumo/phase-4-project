@@ -1,7 +1,11 @@
 class User < ApplicationRecord
+    has_many :posts
+    
     has_many :comments, dependent: :destroy
+
     # has_many :songs, through: :comments
-    has_many :posts, through: :comments
+    
+    has_many :comment_posts, through: :comments, source: :posts
 
     has_many :likes, dependent: :destroy
     # has_many :like_songs, through: :likes, source: :song
