@@ -10,11 +10,13 @@ User.destroy_all
 Song.destroy_all
 Comment.destroy_all
 Like.destroy_all
+Post.destroy_all
 
 User.reset_pk_sequence
 Song.reset_pk_sequence
 Comment.reset_pk_sequence
 Like.reset_pk_sequence
+Post.reset_pk_sequence
 
 puts "Creating users..."
 users = ["Kyle", "Nisa", "Greg", "Arthur", "Lucy", "Adrienne", "Carlos", "Edward", "Ryan", "Brendan", "Kenny", "Terry", "Shevon", "Adreena", "Zeus", "Darren", "Jack", "Dan"]
@@ -45,43 +47,48 @@ Song.create!([
   }
 ])
 
+puts "Seeding Posts..."
+10.times do 
+  Post.create!(user_id: User.ids.sample, song_id: Song.ids.sample)
+end
+
 puts "Creating comments..."
 Comment.create!([
   {
     content: "great song!",
     user_id: User.ids.sample,
-    song_id: Song.ids.sample
+    post_id: Post.ids.sample
   },
   {
     content: "boring",
     user_id: User.ids.sample,
-    song_id: Song.ids.sample
+    post_id: Post.ids.sample
   },
   {
     content: "so fun",
     user_id: User.ids.sample,
-    song_id: Song.ids.sample
+    post_id: Post.ids.sample
   },
   {
     content: "idk about this one",
     user_id: User.ids.sample,
-    song_id: Song.ids.sample
+    post_id: Post.ids.sample
   },
   {
     content: "a bop",
     user_id: User.ids.sample,
-    song_id: Song.ids.sample
+    post_id: Post.ids.sample
   },
   {
     content: "listening on repeat",
     user_id: User.ids.sample,
-    song_id: Song.ids.sample
+    post_id: Post.ids.sample
   }
 ])
 
 puts "Creating likes..."
 20.times do 
-    Like.create!(user_id: User.ids.sample, song_id: Song.ids.sample)
+    Like.create!(user_id: User.ids.sample, post_id: Post.ids.sample)
 end
 
 puts "Done seeding!"

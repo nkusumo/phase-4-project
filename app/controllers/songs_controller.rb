@@ -7,6 +7,11 @@ class SongsController < ApplicationController
         render json: songs
     end
 
+    def show
+        song = find_song
+        render json: song
+    end
+
     def create
         song = Song.create!(song_params)
         render json: song, status: :created
