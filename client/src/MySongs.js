@@ -14,8 +14,22 @@ function MySongs() {
 
     const postArray = myPosts.map((post) => <SongCard key={post.id} {...post} />)
 
+    function handleAddSong(song) {
+        console.log(song)
+        // let songObj = 
+
+        // fetch('http://localhost:3000/posts', {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify(songObj)
+        // })
+    }
+
     return(
         <>
+        <AddSong handleAddSong={handleAddSong} />
         {postArray}
         </>
     )
