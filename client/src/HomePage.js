@@ -15,8 +15,7 @@ function HomePage() {
 
     return (
         <>
-      {postArray}
-        
+        {postArray}
         </>
     )
 }
