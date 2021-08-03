@@ -2,12 +2,12 @@ import {useEffect, useState} from 'react'
 import SongCard from './SongCard'
 import AddSong from './AddSong'
 
-function MySongs() {
+function MySongs({user}) {
 
     const [myPosts, setMyPosts] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:3000/users/3/posts') //change this to dynamic later
+        fetch(`http://localhost:3000/users/${user.id}/posts`)
         .then(res => res.json())
         .then(data => setMyPosts(data))
     },[])
@@ -17,14 +17,8 @@ function MySongs() {
     function handleAddSong(song) {
         console.log(song)
         let songObj = {
-            name: song.name, 
             spotifyID: song.id, 
-            artist: song.artists[0].name,
-            album: song.album.name,
-            image: song.album.images[0].url,
-            year: song.album.release_date.slice(0,3),
-            user_id: 7
-
+            user_id: user.id
         }
 
         fetch('http://localhost:3000/new_post', {
@@ -35,7 +29,15 @@ function MySongs() {
             body: JSON.stringify(songObj)
         })
         .then(resp => resp.json())
-        .then(console.log)
+        .then(data => {
+            console.log(data)
+            if (data.id) {
+                let updatedArray = [data, ...myPosts]
+                setMyPosts(updatedArray)
+            } else {
+                alert('You already added this song!')
+            }
+        })
     }
 
     return(

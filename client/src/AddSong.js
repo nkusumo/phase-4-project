@@ -5,7 +5,7 @@ function AddSong({handleAddSong}) {
 
     const [songSearch, setSongSearch] = useState('')
     const [searchResults, setSearchResults] = useState([])
-    const key = ""
+    const key = "BQAiHIatfr-cGEOBywlkafpJOw3sbAL9qfaKHGvE5j4r4M-bRRoGtnCkwdYyflO46PLtBWVzTonrNtS111HqSBvXYyeamRsOPFDK1fhhM4ywfMSI5JdGtvm4cHMJg71PeWkt2i4A4pa-"
 
     function handleChange(e) {
         setSongSearch(e.target.value)
@@ -26,10 +26,13 @@ function AddSong({handleAddSong}) {
             }
         })
         .then(res => res.json())
-        .then(data => setSearchResults(data.tracks.items))
+        .then(data => {
+            console.log(data)
+            setSearchResults(data.tracks.items)
+        })
     }
 
-    const songChoiceList = searchResults.map(result => <SongChoice song={result} handleAddSong={handleAddSong} />)
+    const songChoiceList = searchResults.map(result => <SongChoice song={result} handleAddSong={handleAddSong} setSearchResults={setSearchResults} />)
 
     return(
         <>

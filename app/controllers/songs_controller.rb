@@ -12,7 +12,6 @@ class SongsController < ApplicationController
         render json: song
     end
 
-    # do a Song.find_or_create_by(spotifyID: params[:spotifyID])
     def create
         song = Song.create!(song_params)
         render json: song, status: :created

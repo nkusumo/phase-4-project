@@ -8,4 +8,8 @@ class User < ApplicationRecord
     has_many :like_posts, through: :likes, source: :post
     
     has_secure_password
+
+    validates :name, :password, presence: true
+    validates :username, presence: true, uniqueness: true
+    validates :password, length: { minimum: 5 }
 end

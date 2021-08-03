@@ -1,4 +1,5 @@
 // import React from 'react';
+import { useState } from 'react'
 import './App.css';
 import {Switch, Route} from 'react-router-dom';
 import NavBar from './NavBar';
@@ -8,20 +9,21 @@ import Login from './Login';
 import MySongs from './MySongs';
 
 function App() {
+  const [user, setUser] = useState(null);
   
   return (
     <>
-      <NavBar />
+      <NavBar user={user} setUser={setUser} />
       <Banner />
         <Switch>
           <Route exact path="/">
             <HomePage />
           </Route>
           <Route exact path="/login">
-            <Login />
+            <Login onLogin={setUser} />
           </Route>
           <Route exact path="/mysongs">
-            <MySongs />
+            <MySongs user={user} />
           </Route>
         </Switch>
       

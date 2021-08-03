@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :create, :destroy, :show]
   get "/users/:id/posts", to: "users#user_posts"
 
+  post "/signup", to: "users#create"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+
   post "/new_post", to: "posts#new_post" 
 
   # Routing logic: fallback requests for React Router.
