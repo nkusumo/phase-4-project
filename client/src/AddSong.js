@@ -5,7 +5,7 @@ function AddSong({handleAddSong}) {
 
     const [songSearch, setSongSearch] = useState('')
     const [searchResults, setSearchResults] = useState([])
-    const key = "BQAQ3wdG2m9JHNf4shgMz5xukDiRrz6ojx0XhiCOr8LdI3TO4Uqb6jjF08La9S_HaLgN3k2Q-0Wj8tgHdi1al2qO1DB9_TBPtElA8iElrh24rxm9YiopalExUtOS_T3NTMs8koLjHh5b"
+    const key = ""
 
     function handleChange(e) {
         setSongSearch(e.target.value)
