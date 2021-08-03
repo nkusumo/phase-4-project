@@ -21,7 +21,7 @@ function AddSong({handleAddSong}) {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Authorization": "Bearer BQAqt6D0QT9EKefWCscw9zkrfpwvOBEICb51WZWrQ41R90Vx3TyiQVdHTmFWft5AV0HMVN-gqsQ4EuskNpyzN0K1ZWosEtBPDb4jnlN2Eh4dU9EBtfpKW5tXxBHaF9KkB_XthaLAAxv0"
+                "Authorization": "Bearer BQBtU51ceysq0Z932n4x8vMG2--o-Oew_lhYJXW9VDYvYZoc90VRd8fzopS5eYWfA74sfj7gXgrT_ijTSeLPG1SDZEjwnif9daNorS4FZSw_8tfeBHoAoRXlPRDVEtiKcpkuu0IVW1z2"
             }
         })
         .then(res => res.json())

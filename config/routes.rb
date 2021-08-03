@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :songs, only: [:index, :show, :create, :destroy]
   resources :users, only: [:index, :create, :destroy, :show]
   get "/users/:id/posts", to: "users#user_posts"
-  # post "/new_post", to: "posts#new_post" --> one possibility
+
+  post "/new_post", to: "posts#new_post" 
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

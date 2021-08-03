@@ -13,7 +13,9 @@ class PostsController < ApplicationController
   end
 
   def create
+    
     post = Post.new(post_params)
+    
     if post.save
       render json: post, status: :created, location: post
     else
@@ -25,7 +27,20 @@ class PostsController < ApplicationController
     post.destroy
   end
 
+  def new_post
+    # song = Song.find_or_create_by(spotifyID: params[:spotifyID]) do |song|
+    #   song.artist
+    # end
+    song = Song.create_with(song_params).find_or_create_by(spotifyID: params[:spotifyID])
+    post = Post.create(user_id: params[:user_id], song_id: song.id)
+    render json: post
+  end
+
   private
+
+  def song_params
+    params.permit(:name, :artist, :album, :image, :year)
+  end
 
   def set_post
     post = Post.find(params[:id])
