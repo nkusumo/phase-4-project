@@ -5,10 +5,10 @@ function SongChoice({song, handleAddSong}) {
     //     handleAddSong(songObj)
     // }
 
+    console.log(song)
     return (
         <>
-        <img src={song.album.images[2].url} alt={song.album.name} />
-        <p>{song.name} - {song.artists[0].name}</p>
+        <iframe src={`https://open.spotify.com/embed/track/${song.id}`} width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         <button onClick={() => handleAddSong(song)}>Add to My Songs</button><br /><br />
         </>
     )

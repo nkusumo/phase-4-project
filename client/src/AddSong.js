@@ -5,6 +5,7 @@ function AddSong({handleAddSong}) {
 
     const [songSearch, setSongSearch] = useState('')
     const [searchResults, setSearchResults] = useState([])
+    const key = "BQAQ3wdG2m9JHNf4shgMz5xukDiRrz6ojx0XhiCOr8LdI3TO4Uqb6jjF08La9S_HaLgN3k2Q-0Wj8tgHdi1al2qO1DB9_TBPtElA8iElrh24rxm9YiopalExUtOS_T3NTMs8koLjHh5b"
 
     function handleChange(e) {
         setSongSearch(e.target.value)
@@ -21,7 +22,7 @@ function AddSong({handleAddSong}) {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Authorization": "Bearer BQBtU51ceysq0Z932n4x8vMG2--o-Oew_lhYJXW9VDYvYZoc90VRd8fzopS5eYWfA74sfj7gXgrT_ijTSeLPG1SDZEjwnif9daNorS4FZSw_8tfeBHoAoRXlPRDVEtiKcpkuu0IVW1z2"
+                "Authorization": `Bearer ${key}`
             }
         })
         .then(res => res.json())

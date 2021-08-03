@@ -25,27 +25,12 @@ users.each {|user| User.create(name: user, username: "#{user}#{rand(1..100)}", p
 puts "Seeding Songs..."
 Song.create!([
   {
-    name: "Happier Than Ever",
-    artist: "Billie Eilish",
-    album: "Happier Than Ever",
-    year: 2021,
-    image: "https://i.scdn.co/image/ab67616d0000b27339a3fc014b4c3a6af1c2458f",
     spotifyID: "4RVwu0g32PAqgUiJoXsdF8"
   },
   {
-    name: "STAY (with Justin Bieber)",
-    artist: "The Kid LAROI",
-    album: "STAY (with Justin Bieber)",
-    year: 2021,
-    image: "https://i.scdn.co/image/ab67616d0000b27341e31d6ea1d493dd77933ee5",
     spotifyID: "5HCyWlXZPP0y6Gqq8TgA20"
   },
   {
-    name: "Bad Habits",
-    artist: "Ed Sheeran",
-    album: "Bad Habits",
-    year: 2021,
-    image: "https://i.scdn.co/image/ab67616d0000b27314a5222ca8fdf13d5c050496",
     spotifyID: "6PQ88X9TkUIAUIZJHW2upE"
   }
 ])
