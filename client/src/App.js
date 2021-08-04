@@ -1,5 +1,5 @@
 // import React from 'react';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css';
 import {Switch, Route} from 'react-router-dom';
 import NavBar from './NavBar';
@@ -8,20 +8,17 @@ import HomePage from './HomePage';
 import Login from './Login';
 import MySongs from './MySongs';
 
-import{useEffect} from 'react';
-
 function App() {
 
   const [user, setUser] = useState(null);
-  
+
   useEffect(() => {
-    fetch("/current_user")
+    fetch("http://localhost:3000/current_user")
     .then(resp => resp.json())
     .then(data => setUser(data))
   },[])
-
-
-
+  
+  console.log(user)
   return (
     <>
       <NavBar user={user} setUser={setUser} />
@@ -37,7 +34,6 @@ function App() {
             <MySongs user={user} />
           </Route>
         </Switch>
-      
     </>
   );
 }

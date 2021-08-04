@@ -12,7 +12,22 @@ function MySongs({user}) {
         .then(data => setMyPosts(data))
     },[])
 
-    const postArray = myPosts.map((post) => <SongCard key={post.id} {...post} user={user} />)
+    function handleDeleteSong(e) {
+        fetch(`http://localhost:3000/posts/${e.target.id}`, {
+            method: "DELETE"
+        })
+        .then(() => {
+            let updatedPosts = myPosts.filter(post => post.id != e.target.id)
+            setMyPosts(updatedPosts)
+        })
+    }
+
+    const postArray = myPosts.map((post) => {
+        return <div key={post.id}>
+            <SongCard {...post} user={user} />
+            <button id={post.id} onClick={handleDeleteSong}>Delete Song</button>
+        </div>
+    })
 
     function handleAddSong(song) {
         console.log(song)

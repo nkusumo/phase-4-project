@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :destroy]
+  before_action :set_post, only: [:show, :destroy] #delete
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
@@ -8,14 +8,13 @@ class PostsController < ApplicationController
     render json: posts
   end
 
+  #delete
   def show
     render json: post
   end
 
   def create
-    
     post = Post.new(post_params)
-    
     if post.save
       render json: post, status: :created, location: post
     else
@@ -24,11 +23,12 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    # post = Post.find(params[:id])
     post.destroy
+    render json: {}
   end
 
   def new_post
-    # song = Song.create_with(song_params).find_or_create_by(spotifyID: params[:spotifyID])
     song = Song.find_or_create_by(spotifyID: params[:spotifyID])
     post = Post.create(user_id: params[:user_id], song_id: song.id)
     render json: post
@@ -36,10 +36,7 @@ class PostsController < ApplicationController
 
   private
 
-  # def song_params
-  #   params.permit(:name, :artist, :album, :image, :year)
-  # end
-
+  #delete
   def set_post
     post = Post.find(params[:id])
   end

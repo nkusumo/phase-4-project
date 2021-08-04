@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import Comment from './Comment'
 
-function SongCard({id, likes_count, username, song, comments, likes, user}) {
+function SongCard({id, username, song, comments, likes, user}) {
 
     const likers = likes.map(like => like.user_id)
     const liked = () => {
@@ -17,16 +17,14 @@ function SongCard({id, likes_count, username, song, comments, likes, user}) {
     const [postComments, setPostComments] = useState(comments)
     const [userComment, setUserComment] =useState('')
 
-    const commentArray = postComments.map((comment) => (
-        
-        <Comment 
-        key ={comment.id}
-        {...comment}
-        user={user}
-        handleDeleteComment={handleDeleteComment}
+    const commentArray = postComments.map((comment) => {
+        return <Comment 
+            key={comment.id}
+            {...comment}
+            user={user}
+            handleDeleteComment={handleDeleteComment}
         />
-
-    ))
+    })
 
     function handleDeleteComment(deleteId) {
         fetch(`http://localhost:3000/comments/${deleteId}`, {
@@ -84,7 +82,6 @@ function SongCard({id, likes_count, username, song, comments, likes, user}) {
     } 
 
     function handleRemoveLike() {
-       
         setIsLiked(!isLiked)
         let like_id = postLikes.find(like => like.user_id === user.id).id
 
@@ -106,7 +103,6 @@ function SongCard({id, likes_count, username, song, comments, likes, user}) {
         !isLiked ? <button onClick={handleLike}> ♡ </button> : <button onClick={handleRemoveLike}> ❤️ </button>
         : null}
         <h5>likes: {postLikes.length}</h5>
-
         <ul>Comments: {commentArray}</ul>
         {user ?
         <form onSubmit={handleComment}>
