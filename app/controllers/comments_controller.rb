@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-        params.permit(:content, :user_id, :song_id)
+        params.permit(:content, :user_id, :post_id)
     end
 
     def render_unprocessable_entity_response(exception)

@@ -13,4 +13,9 @@ class SessionsController < ApplicationController
         session.delete :user_id
         head :no_content
     end
+
+    def user
+      user = User.find_by(id: session[:user_id])
+      render json: user
+    end
 end

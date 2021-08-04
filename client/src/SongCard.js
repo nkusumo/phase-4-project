@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import Comment from './Comment'
 
 function SongCard({id, likes_count, username, song, comments, likes, user}) {
 
@@ -14,8 +15,54 @@ function SongCard({id, likes_count, username, song, comments, likes, user}) {
     const [isLiked, setIsLiked] = useState(liked)
     const [postLikes, setPostLikes] = useState(likes)
     const [postComments, setPostComments] = useState(comments)
+    const [userComment, setUserComment] =useState('')
 
-    const commentArray = comments.map((comment) => <li key={comment.id}> {comment.username}: {comment.content}</li>)
+    const commentArray = postComments.map((comment) => (
+        
+        <Comment 
+        key ={comment.id}
+        {...comment}
+        user={user}
+        handleDeleteComment={handleDeleteComment}
+        />
+
+    ))
+
+    function handleDeleteComment(deleteId) {
+        fetch(`http://localhost:3000/comments/${deleteId}`, {
+            method: "DELETE"
+        })
+        .then(() => {
+            let updatedComments = postComments.filter(comment => comment.id !== deleteId)
+            setPostComments(updatedComments)
+        })
+
+    }
+
+    function handleComment(e) {
+        e.preventDefault()
+
+        const commentData = {
+            user_id: user.id,
+            post_id: id,
+            content: userComment
+        }
+        console.log(commentData)
+        fetch("http://localhost:3000/comments", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(commentData),
+        })
+        .then((r) => r.json())
+        .then(data => {
+            console.log(data)
+            let updatedComments = [...postComments, data]
+            setPostComments(updatedComments)
+        });
+    } 
+    
 
     function handleLike() {
         setIsLiked(!isLiked)
@@ -37,7 +84,7 @@ function SongCard({id, likes_count, username, song, comments, likes, user}) {
     } 
 
     function handleRemoveLike() {
-        console.log('unlike click')
+       
         setIsLiked(!isLiked)
         let like_id = postLikes.find(like => like.user_id === user.id).id
 
@@ -59,7 +106,14 @@ function SongCard({id, likes_count, username, song, comments, likes, user}) {
         !isLiked ? <button onClick={handleLike}> ♡ </button> : <button onClick={handleRemoveLike}> ❤️ </button>
         : null}
         <h5>likes: {postLikes.length}</h5>
+
         <ul>Comments: {commentArray}</ul>
+        {user ?
+        <form onSubmit={handleComment}>
+            <input placeholder="Add Comment" type="text" value={userComment} onChange={e => setUserComment(e.target.value)}/>
+            <button type="submit">Submit</button>
+        </form> :
+        null}
         </>
     )
 }

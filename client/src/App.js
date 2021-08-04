@@ -8,9 +8,20 @@ import HomePage from './HomePage';
 import Login from './Login';
 import MySongs from './MySongs';
 
+import{useEffect} from 'react';
+
 function App() {
+
   const [user, setUser] = useState(null);
   
+  useEffect(() => {
+    fetch("/current_user")
+    .then(resp => resp.json())
+    .then(data => setUser(data))
+  },[])
+
+
+
   return (
     <>
       <NavBar user={user} setUser={setUser} />
