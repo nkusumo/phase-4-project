@@ -21,7 +21,7 @@ class LikesController < ApplicationController
     private
 
     def find_like
-        like.find(params[:id])
+        Like.find(params[:id])
     end
 
     def like_params
