@@ -12,7 +12,7 @@ function MySongs({user}) {
         .then(data => setMyPosts(data))
     },[])
 
-    const postArray = myPosts.map((post) => <SongCard key={post.id} {...post} />)
+    const postArray = myPosts.map((post) => <SongCard key={post.id} {...post} user={user} />)
 
     function handleAddSong(song) {
         console.log(song)

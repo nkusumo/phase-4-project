@@ -25,7 +25,7 @@ class LikesController < ApplicationController
     end
 
     def like_params
-        params.permit(:user_id, :song_id)
+        params.permit(:user_id, :post_id)
     end
 
     def render_unprocessable_entity_response(exception)

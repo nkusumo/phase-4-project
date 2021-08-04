@@ -3,7 +3,7 @@ class PostSerializer < ActiveModel::Serializer
   # has_one :user
   has_one :song
   has_many :comments
-  # has_many :likes
+  has_many :likes
 
   def likes_count
     self.object.num_likes

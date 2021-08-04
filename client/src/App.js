@@ -17,7 +17,7 @@ function App() {
       <Banner />
         <Switch>
           <Route exact path="/">
-            <HomePage />
+            <HomePage user={user} />
           </Route>
           <Route exact path="/login">
             <Login onLogin={setUser} />
