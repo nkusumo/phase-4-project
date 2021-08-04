@@ -13,7 +13,7 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/current_user")
+    fetch("./current_user")
     .then(resp => resp.json())
     .then(data => setUser(data))
   },[])

@@ -7,10 +7,12 @@ function MySongs({user}) {
     const [myPosts, setMyPosts] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:3000/users/${user.id}/posts`)
-        .then(res => res.json())
-        .then(data => setMyPosts(data))
-    },[])
+        if (user) {
+            fetch(`http://localhost:3000/users/${user.id}/posts`)
+            .then(res => res.json())
+            .then(data => setMyPosts(data))
+        }
+    },[user])
 
     function handleDeleteSong(e) {
         fetch(`http://localhost:3000/posts/${e.target.id}`, {
