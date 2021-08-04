@@ -34,6 +34,22 @@ class PostsController < ApplicationController
     render json: post
   end
 
+  def spotify_search
+    # post to get access token
+    token_response = RestClient.post("https://accounts.spotify.com/api/token", 
+      {grant_type: 'client_credentials'},
+      {Authorization: 'Basic MTI2NmE5ZjNhMDU4NDIzYzlkMThkYzJmZDUzYTdiODk6OTczYTQyYjU4NmQ5NGZiOWIzM2RhMzJhMzk2MTFmYTg='}
+    )
+    access_token = JSON.parse(token_response)["access_token"]
+    # get to get song results
+    searchString=params[:search].gsub(" ", "%20")
+    search_response = RestClient.get("https://api.spotify.com/v1/search?q=#{searchString}&type=track&market=US&limit=3", {
+      Authorization: "Bearer #{access_token}"
+    })
+    search_results = JSON.parse(search_response)["tracks"]["items"]
+    render json: search_results
+  end
+
   private
 
   #delete
