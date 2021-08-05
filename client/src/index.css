@@ -28,22 +28,20 @@ div#root {
   
 }
 
-/* #homepage {
-  display: block;
-  float: none;
-  margin: 0 auto;
-  align-content: center;
-  
-} */
-
 .card {
   margin:0 auto;
   float: none;
 }
 
 .comment-section {
-  
-   font-size: 15px;
-    margin-left: -10px;
-  
+  font-size: 17px;
+  margin-left: -20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.delete-btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

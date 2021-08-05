@@ -1,3 +1,5 @@
+import Button from 'react-bootstrap/Button'
+
 function SongChoice({song, handleAddSong, setSearchResults}) {
 
     function handleClick() {
@@ -7,10 +9,10 @@ function SongChoice({song, handleAddSong, setSearchResults}) {
 
     console.log(song)
     return (
-        <>
-        <iframe src={`https://open.spotify.com/embed/track/${song.id}`} width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media" title={song.spotifyID}></iframe>
-        <button onClick={handleClick}>Add to My Songs</button><br /><br />
-        </>
+        <div style={{marginLeft: "-20px"}}>
+        <iframe src={`https://open.spotify.com/embed/track/${song.id}`} width="330" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media" title={song.spotifyID}></iframe><br />
+        <Button variant="success" onClick={handleClick} style={{fontSize:"11px", padding: "3px 6px"}}>Add to My Songs</Button><br /><br /><br />
+        </div>
     )
 }
 

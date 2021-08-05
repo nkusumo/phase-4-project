@@ -1,6 +1,9 @@
 import {useEffect, useState} from 'react'
 import SongCard from './SongCard'
 import AddSong from './AddSong'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 function MySongs({user}) {
 
@@ -14,22 +17,17 @@ function MySongs({user}) {
         }
     },[user])
 
-    function handleDeleteSong(e) {
-        fetch(`http://localhost:3000/posts/${e.target.id}`, {
+    function handleDeleteSong(id) {
+        fetch(`http://localhost:3000/posts/${id}`, {
             method: "DELETE"
         })
         .then(() => {
-            let updatedPosts = myPosts.filter(post => post.id != e.target.id)
+            let updatedPosts = myPosts.filter(post => post.id != id)
             setMyPosts(updatedPosts)
         })
     }
 
-    const postArray = myPosts.map((post) => {
-        return <div key={post.id}>
-            <SongCard {...post} user={user} />
-            <button id={post.id} onClick={handleDeleteSong}>Delete Song</button>
-        </div>
-    })
+    const postArray = myPosts.map((post) => <SongCard key={post.id} {...post} user={user} handleDeleteSong={handleDeleteSong} />)
 
     function handleAddSong(song) {
         console.log(song)
@@ -58,10 +56,16 @@ function MySongs({user}) {
     }
 
     return(
-        <>
-        <AddSong handleAddSong={handleAddSong} />
-        {postArray}
-        </>
+        <Container>
+            <Row>
+                <Col>
+                    <AddSong handleAddSong={handleAddSong} />
+                </Col>
+                <Col>
+                    {postArray}
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

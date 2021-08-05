@@ -2,8 +2,10 @@ import {useState} from 'react';
 import Comment from './Comment'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import CloseButton from 'react-bootstrap/CloseButton'
 
-function SongCard({id, username, song, comments, likes, user}) {
+
+function SongCard({id, username, song, comments, likes, user, handleDeleteSong}) {
 
     const likers = likes.map(like => like.user_id)
     const liked = () => {
@@ -100,10 +102,12 @@ function SongCard({id, username, song, comments, likes, user}) {
     return(
         <div id="song-card">
         <br/>
-        <Card text="light" style={{ width: '22rem', boxShadow: 'rgb(3, 3, 3) 5px 4px 6px', backgroundColor: 'rgb(51, 50, 50)' }}>
+        <Card text="light" style={{ padding: "10px", width: '480px', boxShadow: 'rgb(3, 3, 3) 5px 4px 6px', backgroundColor: 'rgb(51, 50, 50)' }}>
             <Card.Body>
+                {user ? username === user.username ? <CloseButton variant="white" style={{float: "right", fontSize: "10px"}} onClick={()=>handleDeleteSong(id)} />
+                :null :null}
                 <Card.Title>{username}</Card.Title>
-                <iframe src={`https://open.spotify.com/embed/track/${song.spotifyID}`} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media" title={song.spotifyID}></iframe>
+                <iframe src={`https://open.spotify.com/embed/track/${song.spotifyID}`} width="425" height="505" frameBorder="0" allowtransparency="true" allow="encrypted-media" title={song.spotifyID} style={{marginBottom: "10px"}}></iframe>
             {user ? 
             !isLiked ? <Button classname="like-button" variant="success" onClick={handleLike}> ♡ {postLikes.length} </Button> : <Button classname="like-button" variant="success" onClick={handleRemoveLike}> ♥ {postLikes.length} </Button>
             :<label style={{margin: "10px"}}> ♥ {postLikes.length} </label>}
@@ -114,7 +118,7 @@ function SongCard({id, username, song, comments, likes, user}) {
             <hr/>
             <ul>{commentArray}</ul>
             <form onSubmit={handleComment}>
-                <input style={{borderRadius: "5px", marginRight: "5px", height: "35px", paddingLeft:"5px"}} placeholder="Add Comment" type="text" value={userComment} onChange={e => setUserComment(e.target.value)}/>
+                <input style={{borderWidth: "1px", borderRadius: "5px", marginLeft: "10px", marginRight: "7px", height: "35px", width: "330px", paddingLeft:"5px"}} placeholder="Add Comment" type="text" value={userComment} onChange={e => setUserComment(e.target.value)}/>
                 <Button style={{height: "32px", padding:"1px", paddingLeft: "6px", paddingRight: "6px"}}
                  variant="success"type="submit">Submit</Button>
             </form>

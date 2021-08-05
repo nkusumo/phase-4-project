@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SongChoice from './SongChoice'
+import Button from 'react-bootstrap/Button'
 
 function AddSong({handleAddSong}) {
 
@@ -23,9 +24,9 @@ function AddSong({handleAddSong}) {
 
     return(
         <>
-        <form onSubmit={searchSong}>
-            <input type="text" onChange={handleChange} value={songSearch}></input>
-            <input type="submit" value="Search Song"></input>
+        <form onSubmit={searchSong} style={{marginTop: '20px', marginBottom: '40px', verticalAlign: "middle"}}>
+            <input type="text" placeholder="Search for a song" onChange={handleChange} value={songSearch} style={{borderWidth: "1px", borderRadius: "5px", marginTop:"1px", marginLeft: "10px", marginRight: "7px", height: "37px", width: "330px", paddingLeft:"5px"}}></input>
+            <Button type="submit" value="Search Song" variant="success">Search</Button>
         </form>
         <ul>{songChoiceList}</ul>
         </>

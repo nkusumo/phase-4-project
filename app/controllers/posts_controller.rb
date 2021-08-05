@@ -38,7 +38,7 @@ class PostsController < ApplicationController
 
     # get to get song results
     searchString=params[:search].gsub(" ", "%20")
-    search_response = RestClient.get("https://api.spotify.com/v1/search?q=#{searchString}&type=track&market=US&limit=3", {
+    search_response = RestClient.get("https://api.spotify.com/v1/search?q=#{searchString}&type=track&market=US&limit=5", {
       Authorization: "Bearer #{access_token}"
     })
     search_results = JSON.parse(search_response)["tracks"]["items"]
