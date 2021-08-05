@@ -1,13 +1,17 @@
+import Button from 'react-bootstrap/Button'
+import CloseButton from 'react-bootstrap/CloseButton'
+
 function Comment({content, id, username, user, handleDeleteComment}) {
     
     return (
-    
-    <li key={id}> {username}: {content}
-    
+    <div className="comment-section">
+    <small style={{fontWeight: 'bolder'}}> {username}</small> 
     {user ? username === user.username ?
-    <button onClick={() => handleDeleteComment(id)}>delete</button> : null
+    <CloseButton variant="white" style={{float: "right", fontSize: "7px"}} onClick={() => handleDeleteComment(id)} /> : null
     : null}
-    </li>
+    <li>{content}</li>
+    <br/>
+    </div>
     
     )
 }

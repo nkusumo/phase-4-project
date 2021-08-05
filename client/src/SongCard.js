@@ -98,9 +98,9 @@ function SongCard({id, username, song, comments, likes, user}) {
     }
 
     return(
-        <>
+        <div id="song-card">
         <br/>
-        <Card text="light" style={{ width: '22rem', boxShadow: 'rgb(3, 3, 3) 4px 3px 5px', backgroundColor: '#2c2230' }}>
+        <Card text="light" style={{ width: '22rem', boxShadow: 'rgb(3, 3, 3) 5px 4px 6px', backgroundColor: 'rgb(51, 50, 50)' }}>
             <Card.Body>
                 <Card.Title>{username}</Card.Title>
                 <iframe src={`https://open.spotify.com/embed/track/${song.spotifyID}`} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media" title={song.spotifyID}></iframe>
@@ -114,15 +114,16 @@ function SongCard({id, username, song, comments, likes, user}) {
             <hr/>
             <ul>{commentArray}</ul>
             <form onSubmit={handleComment}>
-                <input placeholder="Add Comment" type="text" value={userComment} onChange={e => setUserComment(e.target.value)}/>
-                <Button variant="success"type="submit">Submit</Button>
+                <input style={{borderRadius: "5px", marginRight: "5px", height: "35px", paddingLeft:"5px"}} placeholder="Add Comment" type="text" value={userComment} onChange={e => setUserComment(e.target.value)}/>
+                <Button style={{height: "32px", padding:"1px", paddingLeft: "6px", paddingRight: "6px"}}
+                 variant="success"type="submit">Submit</Button>
             </form>
             </>
             : <><hr/><ul>{commentArray}</ul></>
             : null}
             </Card.Body>
         </Card>
-        </>
+        </div>
     )
 }
 

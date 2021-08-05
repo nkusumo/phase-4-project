@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
@@ -23,4 +24,26 @@ li {
 
 div#root {
   background-color: #2b282a;
+  color: white;
+  
+}
+
+/* #homepage {
+  display: block;
+  float: none;
+  margin: 0 auto;
+  align-content: center;
+  
+} */
+
+.card {
+  margin:0 auto;
+  float: none;
+}
+
+.comment-section {
+  
+   font-size: 15px;
+    margin-left: -10px;
+  
 }

@@ -14,9 +14,9 @@ function HomePage({user}) {
     const postArray = posts.map((post) => <SongCard key={post.id} {...post} user={user} />)
 
     return (
-        <>
+        <div id="homepage">
         {postArray}
-        </>
+        </div>
     )
 }
 
