@@ -1,5 +1,7 @@
 import {useState} from 'react';
 import Comment from './Comment'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 function SongCard({id, username, song, comments, likes, user}) {
 
@@ -15,7 +17,8 @@ function SongCard({id, username, song, comments, likes, user}) {
     const [isLiked, setIsLiked] = useState(liked)
     const [postLikes, setPostLikes] = useState(likes)
     const [postComments, setPostComments] = useState(comments)
-    const [userComment, setUserComment] =useState('')
+    const [userComment, setUserComment] = useState('')
+    const [showComments, setShowComments] = useState(false)
 
     const commentArray = postComments.map((comment) => {
         return <Comment 
@@ -97,19 +100,28 @@ function SongCard({id, username, song, comments, likes, user}) {
     return(
         <>
         <br/>
-        <h4>{username}</h4>
-        <iframe src={`https://open.spotify.com/embed/track/${song.spotifyID}`} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media" title={song.spotifyID}></iframe>
-        {user ? 
-        !isLiked ? <button onClick={handleLike}> ♡ </button> : <button onClick={handleRemoveLike}> ❤️ </button>
-        : null}
-        <h5>likes: {postLikes.length}</h5>
-        <ul>Comments: {commentArray}</ul>
-        {user ?
-        <form onSubmit={handleComment}>
-            <input placeholder="Add Comment" type="text" value={userComment} onChange={e => setUserComment(e.target.value)}/>
-            <button type="submit">Submit</button>
-        </form> :
-        null}
+        <Card text="light" style={{ width: '22rem', boxShadow: 'rgb(3, 3, 3) 4px 3px 5px', backgroundColor: '#2c2230' }}>
+            <Card.Body>
+                <Card.Title>{username}</Card.Title>
+                <iframe src={`https://open.spotify.com/embed/track/${song.spotifyID}`} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media" title={song.spotifyID}></iframe>
+            {user ? 
+            !isLiked ? <Button classname="like-button" variant="success" onClick={handleLike}> ♡ {postLikes.length} </Button> : <Button classname="like-button" variant="success" onClick={handleRemoveLike}> ♥ {postLikes.length} </Button>
+            :<label style={{margin: "10px"}}> ♥ {postLikes.length} </label>}
+            &nbsp;&nbsp;<Button variant="success" onClick={() => setShowComments(!showComments)}> {showComments ? 'Hide' : 'Show' } Comments </Button>
+            {showComments ? 
+            user ?
+            <>
+            <hr/>
+            <ul>{commentArray}</ul>
+            <form onSubmit={handleComment}>
+                <input placeholder="Add Comment" type="text" value={userComment} onChange={e => setUserComment(e.target.value)}/>
+                <Button variant="success"type="submit">Submit</Button>
+            </form>
+            </>
+            : <><hr/><ul>{commentArray}</ul></>
+            : null}
+            </Card.Body>
+        </Card>
         </>
     )
 }

@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.like-button {
+  padding: .1rem .3rem;
+  font-size: 1.5rem;
+}
+
+li {
+  list-style-type: none;
+}
+
+div#root {
+  background-color: #2b282a;
+}

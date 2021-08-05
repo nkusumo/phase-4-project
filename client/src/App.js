@@ -8,6 +8,8 @@ import HomePage from './HomePage';
 import Login from './Login';
 import MySongs from './MySongs';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
 
   const [user, setUser] = useState(null);
