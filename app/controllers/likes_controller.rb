@@ -2,12 +2,6 @@ class LikesController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-    # delete later
-    def index
-        likes = Like.all
-        render json: likes
-    end
-
     def create
         like = Like.create!(like_params)
         render json: like, status: :created

@@ -1,16 +1,10 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :destroy] #delete
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   def index
     posts = Post.all
     render json: posts
-  end
-
-  #delete
-  def show
-    render json: post
   end
 
   def create
@@ -23,7 +17,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    # post = Post.find(params[:id])
+    post = Post.find(params[:id])
     post.destroy
     render json: {}
   end
@@ -41,6 +35,7 @@ class PostsController < ApplicationController
       {Authorization: 'Basic MTI2NmE5ZjNhMDU4NDIzYzlkMThkYzJmZDUzYTdiODk6OTczYTQyYjU4NmQ5NGZiOWIzM2RhMzJhMzk2MTFmYTg='}
     )
     access_token = JSON.parse(token_response)["access_token"]
+
     # get to get song results
     searchString=params[:search].gsub(" ", "%20")
     search_response = RestClient.get("https://api.spotify.com/v1/search?q=#{searchString}&type=track&market=US&limit=3", {
@@ -51,11 +46,6 @@ class PostsController < ApplicationController
   end
 
   private
-
-  #delete
-  def set_post
-    post = Post.find(params[:id])
-  end
 
   def post_params
     params.require(:post).permit(:user_id, :song_id)

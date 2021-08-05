@@ -10,7 +10,7 @@ function MySongs({user}) {
         if (user) {
             fetch(`http://localhost:3000/users/${user.id}/posts`)
             .then(res => res.json())
-            .then(data => setMyPosts(data))
+            .then(data => setMyPosts(data.reverse()))
         }
     },[user])
 

@@ -13,17 +13,6 @@ class UsersController < ApplicationController
         render json: user, status: :created
     end
 
-    def show 
-        user = find_user
-        render json: user
-    end
-
-    # def destroy
-    #     user = find_user
-    #     user.destroy
-    #     render json: {}
-    # end
-
     def user_posts
         user = find_user
         user_posts = user.posts
