@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 function MySongs({user}) {
+    document.title = "Songbook | My Songs"
 
     const [myPosts, setMyPosts] = useState([])
 

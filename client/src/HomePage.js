@@ -4,6 +4,7 @@ import Pagination from 'react-bootstrap/Pagination'
 import PageItem from 'react-bootstrap/PageItem'
 
 function HomePage({user}) {
+    document.title = "Songbook | Home"
 
     const[posts, setPosts] = useState([])
 

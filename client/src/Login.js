@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 
 function Login({onLogin}) {
+    document.title = "Songbook | Login"
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
