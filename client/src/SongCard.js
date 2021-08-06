@@ -63,6 +63,7 @@ function SongCard({id, username, song, comments, likes, user, handleDeleteSong})
             console.log(data)
             let updatedComments = [...postComments, data]
             setPostComments(updatedComments)
+            setUserComment('')
         });
     } 
     
