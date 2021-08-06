@@ -62,6 +62,21 @@ function Login({onLogin}) {
         signUp();
     }
 
+    function switchToSignup() {
+        setShowSignUp(false)
+        setUsername("")
+        setPassword("")
+        setErrors([])
+    }
+
+    function switchToLogin() {
+        setShowSignUp(true)
+        setName("")
+        setUsername("")
+        setPassword("")
+        setErrors([])
+    }
+
     return(
         <Card className="text-center">
             
@@ -71,7 +86,6 @@ function Login({onLogin}) {
         {showSignUp ? 
         <>
         <form onSubmit={handleSignUp}>
-           
             <label style={{marginRight: '10px', width:"75px"}}>Name</label>
             <input style={{borderWidth: "1px", borderRadius: "5px"}} type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)}/><br />
             <label style={{marginRight: '10px'}}>Username</label>
@@ -79,12 +93,12 @@ function Login({onLogin}) {
             <label style={{marginRight: '10px', width:"75px", marginBottom: '15px'}}>Password</label>
             <input style={{borderWidth: "1px", borderRadius: "5px"}}  type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/><br />
             <Button style ={{padding: '6px'}} variant="success" type="submit">Create Account</Button>
-            
         </form>
+        <div style={{marginTop: "20px", color: "red"}}>{errors.map(err => <p key={err}>{err}</p>)}</div>
         <div>
             <br/>
             Already have an account?
-            <Button style ={{padding: '6px', marginLeft: '10px'}} variant="success" onClick={() => setShowSignUp(false)}>Login here</Button>
+            <Button style ={{padding: '6px', marginLeft: '10px'}} variant="success" onClick={switchToSignup}>Login here</Button>
         </div>
         </>
         : 
@@ -95,17 +109,15 @@ function Login({onLogin}) {
             <label style={{marginRight: '10px', marginBottom: '15px'}}>Password</label>
             <input style={{borderWidth: "1px", borderRadius: "5px"}}  type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/><br />
             <Button style ={{padding: '6px'}} variant="success" type="submit">Login</Button>
-            
         </form>
+        <div style={{marginTop: "20px", color: "red"}}>{errors.map(err => <p key={err}>{err}</p>)}</div>
         <div>
-            <br/>
             Don't have an account?
             <br/>
-            <Button style ={{padding: '6px', marginTop:"10px"}} variant="success" onClick={() => setShowSignUp(true)}>Sign up here</Button>
+            <Button style ={{padding: '6px', marginTop:"10px"}} variant="success" onClick={switchToLogin}>Sign up here</Button>
         </div>
         </>
         }
-        <div>{errors.map(err => <p key={err}>{err}</p>)}</div>
         </div>
         </Card>
     )

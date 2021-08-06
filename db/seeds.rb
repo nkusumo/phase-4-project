@@ -31,12 +31,54 @@ Song.create!([
     spotifyID: "5HCyWlXZPP0y6Gqq8TgA20"
   },
   {
+    spotifyID: "3YJJjQPAbDT7mGpX3WtQ9A"
+  },
+  {
+    spotifyID: "4EWBhKf1fOFnyMtUzACXEc"
+  },
+  {
     spotifyID: "6PQ88X9TkUIAUIZJHW2upE"
+  },
+  {
+    spotifyID: "15EPc80XuFrb2LmOzGjuRg"
+  },
+  {
+    spotifyID: "2rmq49FcJ4U3wh1Z7C9UxE"
+  },
+  {
+    spotifyID: "7Lf7oSEVdzZqTA0kEDSlS5"
+  },
+  {
+    spotifyID: "2k9N4caeCIJLOWwWwssrEM"
+  },
+  {
+    spotifyID: "3hhbDnFUb2bicI2df6VurK"
+  },
+  {
+    spotifyID: "4IablJ6SqVNGY4vrseyKxu"
+  },
+  {
+    spotifyID: "20TYNq9o5sdBAbkCWE9ih7"
+  },
+  {
+    spotifyID: "6I9VzXrHxO9rA9A5euc8Ak"
+  },
+  {
+    spotifyID: "6g0Orsxv6glTJCt4cHsRsQ"
+  },
+  {
+    spotifyID: "2nGFzvICaeEWjIrBrL2RAx"
+  },
+  {
+    spotifyID: "0aMHIW1lqrulVCx0LLlr6a"
+  },
+  {
+    spotifyID: "0ZNrc4kNeQYD9koZ3KvCsy"
   }
 ])
 
 puts "Seeding Posts..."
-10.times do 
+15.times do 
   Post.create!(user_id: User.ids.sample, song_id: Song.ids.sample)
 end
 
