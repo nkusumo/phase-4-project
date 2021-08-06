@@ -106,12 +106,12 @@ function SongCard({id, username, song, comments, likes, user, handleDeleteSong})
             <Card.Body>
                 {user ? username === user.username ? <CloseButton variant="white" style={{float: "right", fontSize: "10px"}} onClick={()=>handleDeleteSong(id)} />
                 :null :null}
-                <Card.Title>{username}</Card.Title>
+                <Card.Title style={{color: "rgb(30, 197, 30)", fontWeight: "bolder", marginBottom:"15px", textShadow: 'rgb(3, 3, 3) 3px 2px 3px'}}>{username}</Card.Title>
                 <iframe src={`https://open.spotify.com/embed/track/${song.spotifyID}`} width="425" height="505" frameBorder="0" allowtransparency="true" allow="encrypted-media" title={song.spotifyID} style={{marginBottom: "10px"}}></iframe>
             {user ? 
-            !isLiked ? <Button classname="like-button" variant="success" onClick={handleLike}> ♡ {postLikes.length} </Button> : <Button classname="like-button" variant="success" onClick={handleRemoveLike}> ♥ {postLikes.length} </Button>
+            !isLiked ? <Button style={{boxShadow: 'rgb(3, 3, 3) 3px 3px 4px'}} classname="like-button" variant="success" onClick={handleLike}> ♡ {postLikes.length} </Button> : <Button style={{boxShadow: 'rgb(3, 3, 3) 5px 4px 6px'}} classname="like-button" variant="success" onClick={handleRemoveLike}> ♥ {postLikes.length} </Button>
             :<label style={{margin: "10px"}}> ♥ {postLikes.length} </label>}
-            &nbsp;&nbsp;<Button variant="success" onClick={() => setShowComments(!showComments)}> {showComments ? 'Hide' : 'Show' } Comments </Button>
+            &nbsp;&nbsp;<Button style={{boxShadow: 'rgb(3, 3, 3) 3px 3px 4px'}} variant="success" onClick={() => setShowComments(!showComments)}> {showComments ? 'Hide' : 'Show' } Comments </Button>
             {showComments ? 
             user ?
             <>

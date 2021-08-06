@@ -45,3 +45,34 @@ div#root {
   margin-left: auto;
   margin-right: auto;
 }
+
+.login {
+ 
+  position: fixed;
+  margin:0 auto;
+  float: none;
+  top: 56px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  /* background: #2b282a; */
+  background-image: url("https://www.teahub.io/photos/full/29-291718_line-pattern-green-and-blue-dual-monitor-wallpaper.jpg") ;
+}
+
+.banner {
+  background-image: url("https://swall.teahub.io/photos/small/29-291718_line-pattern-green-and-blue-dual-monitor-wallpaper.jpg");
+  width: 100%;
+  height: 25vh;
+  margin-bottom: 40px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+h1 {
+  text-shadow: rgb(3, 3, 3) 4px 3px 5px;
+  font-size: 4rem;
+  
+}

@@ -24,7 +24,7 @@ function NavBar({user, setUser}) {
   return (
     <Navbar style={{backgroundColor: 'black'}} variant="dark">
       <Container>
-        <Nav>
+        <Nav style={{marginLeft: "-30px"}}>
           {user ? 
           <>
             <Navbar.Text className="ml-auto" style={{fontWeight: 'bold', marginRight: "20px", color: 'white'}}>Welcome, {user.name}!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </Navbar.Text>

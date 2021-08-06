@@ -1,5 +1,7 @@
 import {useState} from 'react'
 import { useHistory } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 
 function Login({onLogin}) {
 
@@ -61,41 +63,51 @@ function Login({onLogin}) {
     }
 
     return(
-        <>
+        <Card className="text-center">
+            
+        <div className="login" style ={{paddingTop: '50px'}}>
+        <h2>App Name</h2>
+        <br/>
         {showSignUp ? 
         <>
         <form onSubmit={handleSignUp}>
-            <label>Name</label>
-            <input type="text" placeholder="name" value={name} onChange={e => setName(e.target.value)}/><br />
-            <label>Username</label>
-            <input type="text" placeholder="username" value={username} onChange={e => setUsername(e.target.value)}/><br />
-            <label>Password</label>
-            <input type="password" placeholder="password" value={password} onChange={e => setPassword(e.target.value)}/><br />
-            <button type="submit">Create Account</button>
+           
+            <label style={{marginRight: '10px', width:"75px"}}>Name</label>
+            <input style={{borderWidth: "1px", borderRadius: "5px"}} type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)}/><br />
+            <label style={{marginRight: '10px'}}>Username</label>
+            <input style={{borderWidth: "1px", borderRadius: "5px"}}  type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)}/><br />
+            <label style={{marginRight: '10px', width:"75px", marginBottom: '15px'}}>Password</label>
+            <input style={{borderWidth: "1px", borderRadius: "5px"}}  type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/><br />
+            <Button style ={{padding: '6px'}} variant="success" type="submit">Create Account</Button>
+            
         </form>
         <div>
+            <br/>
             Already have an account?
-            <button onClick={() => setShowSignUp(false)}>Login here</button>
+            <Button style ={{padding: '6px', marginLeft: '10px'}} variant="success" onClick={() => setShowSignUp(false)}>Login here</Button>
         </div>
         </>
         : 
         <>
         <form onSubmit={handleLogin}>
-            <label>Username</label>
-            <input type="text" placeholder="username" value={username} onChange={e => setUsername(e.target.value)}/><br />
-            <label>Password</label>
-            <input type="password" placeholder="password" value={password} onChange={e => setPassword(e.target.value)}/><br />
-            <button type="submit">Login</button>
+            <label style={{marginRight: '6px'}}>Username</label>
+            <input style={{borderWidth: "1px", borderRadius: "5px", width:"170px"}}  type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)}/><br />
+            <label style={{marginRight: '10px', marginBottom: '15px'}}>Password</label>
+            <input style={{borderWidth: "1px", borderRadius: "5px"}}  type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/><br />
+            <Button style ={{padding: '6px'}} variant="success" type="submit">Login</Button>
             
         </form>
         <div>
+            <br/>
             Don't have an account?
-            <button onClick={() => setShowSignUp(true)}>Sign up here</button>
+            <br/>
+            <Button style ={{padding: '6px', marginTop:"10px"}} variant="success" onClick={() => setShowSignUp(true)}>Sign up here</Button>
         </div>
         </>
         }
         <div>{errors.map(err => <p key={err}>{err}</p>)}</div>
-        </>
+        </div>
+        </Card>
     )
 }
 
