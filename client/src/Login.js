@@ -82,7 +82,7 @@ function Login({onLogin}) {
         <Card className="text-center">
             
         <div className="login" style ={{paddingTop: '50px'}}>
-        <h2>App Name</h2>
+        <h2>Songbook</h2>
         <br/>
         {showSignUp ? 
         <>

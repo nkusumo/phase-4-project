@@ -112,7 +112,7 @@ function SongCard({id, username, song, comments, likes, user, handleDeleteSong})
             {user ? 
             !isLiked ? <Button style={{boxShadow: 'rgb(3, 3, 3) 3px 3px 4px'}} classname="like-button" variant="success" onClick={handleLike}> ♡ {postLikes.length} </Button> : <Button style={{boxShadow: 'rgb(3, 3, 3) 5px 4px 6px'}} classname="like-button" variant="success" onClick={handleRemoveLike}> ♥ {postLikes.length} </Button>
             :<label style={{margin: "10px"}}> ♥ {postLikes.length} </label>}
-            &nbsp;&nbsp;<Button style={{boxShadow: 'rgb(3, 3, 3) 3px 3px 4px'}} variant="success" onClick={() => setShowComments(!showComments)}> {showComments ? 'Hide' : 'Show' } Comments </Button>
+            &nbsp;&nbsp;<Button style={{boxShadow: 'rgb(3, 3, 3) 3px 3px 4px'}} variant="success" onClick={() => setShowComments(!showComments)}> {showComments ? 'Hide' : 'Show' } {postComments.length} Comment(s) </Button>
             {showComments ? 
             user ?
             <>
